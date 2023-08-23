@@ -1,5 +1,5 @@
 import "./App.css";
-import {explorer} from './data/folder';
+import { explorer } from "./data/folder";
 import { useState } from "react";
 import Folder from "./components/Folder";
 
@@ -9,7 +9,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <Folder explorer={explorerData}/>
+      <Folder explorer={explorerData} setExplorer={setExplorerData} />
     </div>
   );
 }
