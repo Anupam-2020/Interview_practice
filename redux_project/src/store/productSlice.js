@@ -8,10 +8,10 @@ const productSlice = createSlice({
         data:[],
         loading: StatusCode.IDLE
     },
-    reducers:{
-        fetchProducts: (state, actions) => {
-            state.data = actions.payload
-        }
+    reducers: {
+        // fetchProducts: (state, actions) => {
+        //     state.data = actions.payload
+        // }
     },
     extraReducers: (builder) => {
         builder
