@@ -1,0 +1,33 @@
+/* img {
+    width: 15vw;
+    height: 20vh;
+    object-fit: contain;
+    margin-top: 1rem;
+}
+
+.parentDiv {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.prod_details{
+    height: 18vh;
+} 
+*/
+
+button {
+    background-color: rgb(38, 98, 162);
+    border-style: none;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    color: aliceblue;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:active {
+    background-color: rgb(10, 66, 126);
+    opacity: 1;
+}

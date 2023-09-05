@@ -1,0 +1,26 @@
+.parentClass {
+    width: 20vw;
+    height: 48vh;
+    margin-left: 1.3rem;
+    margin-right: 1.3rem;
+    box-shadow: 3px 3px 5px #000;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+img {
+    width: 15vw;
+    height: 20vh;
+    object-fit: contain;
+    margin-top: 1rem;
+}
+
+.parentDiv {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.prod_details{
+    /* border: 1px solid black; */
+    height: 18vh;
+}
