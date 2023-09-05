@@ -1,0 +1,13 @@
+li {
+    list-style: none;
+    cursor: pointer;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: antiquewhite;
+    margin-top: 10vh;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+}

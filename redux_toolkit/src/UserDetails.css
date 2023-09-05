@@ -1,0 +1,5 @@
+.list_div {
+    display: flex;
+    width: 20vw;
+    justify-content: space-between;
+}
