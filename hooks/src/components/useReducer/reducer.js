@@ -1,3 +1,4 @@
+import { init } from "./Tasks";
 import { TODO_ACTIONS } from "./case";
 
 export const reducer = (state, action) => {
@@ -13,8 +14,4 @@ export const reducer = (state, action) => {
         case TODO_ACTIONS.RESET_TASKS: return init(action.payload);
         default : return state
     }
-}
-
-export function init(initialState) {
-    return initialState;
 }

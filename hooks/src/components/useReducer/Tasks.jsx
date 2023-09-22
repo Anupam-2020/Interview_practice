@@ -1,8 +1,13 @@
 import React, { useReducer } from 'react';
-import { init, reducer } from './reducer';
+import { reducer } from './reducer';
 import { TODO_ACTIONS } from './case';
 
 const initialState = [];
+
+
+export function init(initialState) {
+    return initialState;
+}
 
 const Tasks = () => {
     const [todos, dispatch] = useReducer(reducer, initialState, init);
