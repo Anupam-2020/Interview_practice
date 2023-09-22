@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Context } from './context';
 
 function Users() {
+    const {userList} = useContext(Context);
+    console.log(userList);
   return (
-    <div>Users</div>
+    <div>
+        {userList.map(user => {
+            return (
+                <div>{user.name}</div>
+            )
+        })}
+    </div>
   )
 }
 
