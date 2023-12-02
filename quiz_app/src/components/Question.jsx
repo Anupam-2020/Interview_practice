@@ -26,13 +26,19 @@ const Questions = ({ currentQuest, setMarksScored, setCurrentQuest }) => {
     currentQuest(currentQuestion);
     console.log(chooseOptions);
     setChooseOptions([]);
-    if (correctAnswer() === 1) {
+    if (correctAnswer() === 1 && questionList[currentQuestion].storeResponse === null) {
       setScore((score) => score + 1);
+      questionList[currentQuestion].storeResponse = true
+    } else {
+      questionList[currentQuestion].storeResponse = null
     }
     setOption1(false)
     setOption2(false)
     setOption3(false)
     setOption4(false)
+
+    console.log(questionList[currentQuestion].storeResponse);
+    console.log(score)
   };
 
   const onSubmitHandler = () => {
@@ -42,10 +48,19 @@ const Questions = ({ currentQuest, setMarksScored, setCurrentQuest }) => {
     }
     setMarksScored(score);
     console.log(score);
+    console.log(questionList)
   };
 
   const onPreviousHandler = () => {
     setCurrentQuestion((quest) => quest - 1);
+    if(questionList[currentQuestion-1].storeResponse === true) {
+      setScore((score) => score - 1)
+      questionList[currentQuestion-1].storeResponse = null
+    }
+    setOption1(false)
+    setOption2(false)
+    setOption3(false)
+    setOption4(false)
   };
 
   // const inputHandler = (i, e) => {
