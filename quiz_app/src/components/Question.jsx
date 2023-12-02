@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { questionList } from "../data/questionList";
+import Options from "./Options";
 
+let response = [null, null, null, null, null]; // keeps record of correct/incorrect response
 
 const Questions = ({ currentQuest, setMarksScored, setCurrentQuest }) => {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [chooseOptions, setChooseOptions] = useState([]);
-  const [score, setScore] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(0); // keeps the count of current question.
+  const [chooseOptions, setChooseOptions] = useState([]); // stores responses for each question in array.
+  const [score, setScore] = useState(0); // update score
 
   const [option1, setOption1] = useState(false);
   const [option2, setOption2] = useState(false);
@@ -26,46 +28,43 @@ const Questions = ({ currentQuest, setMarksScored, setCurrentQuest }) => {
     currentQuest(currentQuestion);
     console.log(chooseOptions);
     setChooseOptions([]);
-    if (correctAnswer() === 1 && questionList[currentQuestion].storeResponse === null) {
+    if (correctAnswer() === 1 && response[currentQuestion] === null) {
       setScore((score) => score + 1);
-      questionList[currentQuestion].storeResponse = true
+      response[currentQuestion] = true;
     } else {
-      questionList[currentQuestion].storeResponse = null
+      response[currentQuestion] = null;
     }
-    setOption1(false)
-    setOption2(false)
-    setOption3(false)
-    setOption4(false)
+    setOption1(false);
+    setOption2(false);
+    setOption3(false);
+    setOption4(false);
 
-    console.log(questionList[currentQuestion].storeResponse);
-    console.log(score)
+    // console.log(score)
   };
 
   const onSubmitHandler = () => {
-    setCurrentQuest((quest) => quest + 1)
-    if (correctAnswer() === 1) {
-        setScore((score) => score + 1);
+    setCurrentQuest((quest) => quest + 1);
+    if (correctAnswer() === 1 && response[currentQuestion] === null) {
+      setScore((score) => score + 1);
     }
     setMarksScored(score);
     console.log(score);
-    console.log(questionList)
+    console.log(response);
   };
 
   const onPreviousHandler = () => {
     setCurrentQuestion((quest) => quest - 1);
-    if(questionList[currentQuestion-1].storeResponse === true) {
-      setScore((score) => score - 1)
-      questionList[currentQuestion-1].storeResponse = null
-    }
-    setOption1(false)
-    setOption2(false)
-    setOption3(false)
-    setOption4(false)
-  };
 
-  // const inputHandler = (i, e) => {
-  //   setChooseOptions((options) => [...options, i + 1]);
-  // };
+    if (response[currentQuestion - 1] === true) {
+      setScore((score) => score - 1);
+      response[currentQuestion - 1] = null;
+    }
+
+    setOption1(false);
+    setOption2(false);
+    setOption3(false);
+    setOption4(false);
+  };
 
   return (
     <>
@@ -88,38 +87,19 @@ const Questions = ({ currentQuest, setMarksScored, setCurrentQuest }) => {
           );
         })} */}
 
-
-        <div className="options">
-          <input type="checkbox" checked={option1} onChange={() => {
-            setChooseOptions((options) => [...options, 1]);
-            setOption1(!option1);
-          }}/>
-          <p>{questionList[currentQuestion].options[0]}</p>
-        </div>
-        
-        <div className="options">
-          <input type="checkbox" checked={option2} onChange={() => {
-            setChooseOptions((options) => [...options, 2]);
-            setOption2(!option2);
-          }}/>
-          <p>{questionList[currentQuestion].options[1]}</p>
-        </div>
-
-        <div className="options">
-          <input type="checkbox" checked={option3} onChange={() => {
-            setChooseOptions((options) => [...options, 3]);
-            setOption3(!option3);
-          }}/>
-          <p>{questionList[currentQuestion].options[2]}</p>
-        </div>
-
-        <div className="options">
-          <input type="checkbox" checked={option4} onChange={() => {
-            setChooseOptions((options) => [...options, 4]);
-            setOption4(!option4);
-          }}/>
-          <p>{questionList[currentQuestion].options[3]}</p>
-        </div>
+        <Options
+          setChooseOptions={setChooseOptions}
+          option1={option1}
+          option2={option2}
+          option3={option3}
+          option4={option4}
+          currentQuestion={currentQuestion}
+          questionList={questionList}
+          setOption1={setOption1}
+          setOption2={setOption2}
+          setOption3={setOption3}
+          setOption4={setOption4}
+        />
       </div>
       <div>
         {currentQuestion > 0 ? (
